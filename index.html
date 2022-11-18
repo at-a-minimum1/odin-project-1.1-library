@@ -1,12 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Project</title>
-</head>
-<body>
-    
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Library Project</title>
+		<link rel="stylesheet" href="styles.css" />
+		<script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+	</head>
+	<body>
+		<div class="navigation-wrap secondary-clr">
+			<h1>My Library</h1>
+		</div>
+		<div class="content-wrap">
+			<div class="results-panel primary-clr" id="resultsPanel">
+				<card class="">This is a card</card>
+			</div>
+			<div class="side-navigation primary-clr">
+				<h2 class="cursor-pointer">
+					<iconify-icon
+						icon="carbon:user-avatar-filled"
+						width="40"
+						height="40"
+						class="cursor-pointer"
+					></iconify-icon>
+					Username
+				</h2>
+				<button onclick="addElement()" class="accent-clr">
+					Add Book
+					<iconify-icon
+						icon="carbon:add-filled"
+						width="32"
+						height="32"
+					></iconify-icon>
+				</button>
+				<button class="primary-clr">
+					Settings
+					<iconify-icon
+						icon="ci:settings-filled"
+						width="32"
+						height="32"
+					></iconify-icon>
+				</button>
+			</div>
+		</div>
+
+		<script src="app.js"></script>
+	</body>
 </html>
