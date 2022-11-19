@@ -1,9 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
 /* @collappse */
+:root {
+	--primary-clr: #ffffec;
+	--secondary-clr: #81b5a8;
+	--accent-clr: #40e0ff;
+}
 * {
 	/* font-family: "Courier New", Courier, monospace; */
 	/* all: revert; */
 	font-family: "Merriweather", serif;
+	/* --primary-clr: #fcfcd4;
+	--secondary-clr: #81b5a8;
+	--accent-clr: #40e0ff; */
 }
 /* Elements */
 card {
@@ -39,17 +47,17 @@ button:hover {
 	box-shadow: 3px 4px #898989;
 }
 button:active {
-	box-shadow: inset 1px 0 1px 0 #898989;
+	box-shadow: inset 2px 2px 1px 1px #898989;
 }
 /* Utility Classes */
 .primary-clr {
-	background-color: #fcfcd4;
+	background-color: var(--primary-clr);
 }
 .secondary-clr {
-	background-color: #81b5a8;
+	background-color: var(--secondary-clr);
 }
 .accent-clr {
-	background-color: #40e0ff;
+	background-color: var(--accent-clr);
 }
 .border {
 	border: solid;
@@ -58,11 +66,25 @@ button:active {
 .cursor-pointer {
 	cursor: pointer;
 }
+.boxed label {
+	display: inline-block;
+	width: 200px;
+	padding: 10px;
+	border: solid 2px #ccc;
+	transition: all 0.3s;
+}
+
+.boxed input[type="radio"] {
+	display: none;
+}
+
+.boxed input[type="radio"]:checked + label {
+	background-color: var(--secondary-clr);
+}
 /* Top Navigation */
 .navigation-wrap {
 	display: flex;
 	justify-content: center;
-	background-color: #81b5a8;
 	width: 100vw;
 	max-height: 82px;
 	position: fixed;
@@ -92,3 +114,15 @@ button:active {
 	top: 10%;
 	box-shadow: inset 0.2rem 0.2rem 8px #898989;
 }
+
+select {
+	font-size: 20px;
+	background-color: var(--primary-clr);
+}
+
+.items :hover {
+	background-color: var(--secondary-clr);
+}
+/* .book-length {
+	background-color: var(--secondary-clr);
+} */

@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="styles.css" />
 		<script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 	</head>
-	<body>
+	<body class="primary-clr">
 		<div class="navigation-wrap secondary-clr">
 			<h1>My Library</h1>
 		</div>
@@ -26,6 +26,48 @@
 					></iconify-icon>
 					Username
 				</h2>
+				<form class="boxed" action="">
+					<label for="label-title">Title</label>
+					<input type="text" name="title" id="title" />
+					<label for="label-author">Author</label>
+					<input type="text" name="author" id="author" />
+					<label for="label-pages">Book Length</label>
+					<!-- Different Lengths for books found here: -->
+					<!-- https://www.authorlearningcenter.com/writing/fiction/w/identifying-your-genre/7125/short-fiction-forms-novella-novelette-short-story-and-flash-fiction-defined -->
+					<!-- https://youtu.be/7LGpIQ6ceJs -->
+					<br />
+					<!-- Cannot style options themselves. If I want to style the hover effect on these elements I have to redo this in a different way. -->
+					<select name="book-length" id="bookLength">
+						<option value="">Short Story</option>
+						<option value="">Novella</option>
+						<option value="">Novellete</option>
+						<option value="">Novel</option>
+					</select>
+
+					<!-- <input
+						type="radio"
+						name="book-length"
+						id="shortStory"
+						value="Short story"
+					/>
+					<label for="shortStory">Short Story</label>
+					<input type="radio" name="book-length" id="novella" />
+					<label for="novella">novella</label>
+
+					<input type="radio" name="book-length" id="novellete" />
+					<label for="novellete">Novellete</label>
+
+					<input type="radio" name="book-length" id="novel" />
+					<label for="novel">Novel</label> -->
+
+					<label for="label-isread">Have you read this?</label>
+					<br />
+					<input type="radio" name="isRead" id="isRead" />
+					<label for="isRead">Yes</label>
+					<input type="radio" name="isRead" id="notRead" />
+					<label for="notRead">No</label>
+				</form>
+
 				<button onclick="addElement()" class="accent-clr">
 					Add Book
 					<iconify-icon
@@ -34,7 +76,10 @@
 						height="32"
 					></iconify-icon>
 				</button>
-				<button class="primary-clr">
+				<button onclick="changeTheme()" class="primary-clr">
+					Change Theme
+				</button>
+				<button onclick="" class="primary-clr">
 					Settings
 					<iconify-icon
 						icon="ci:settings-filled"
