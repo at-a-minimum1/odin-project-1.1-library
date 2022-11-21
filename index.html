@@ -14,70 +14,67 @@
 		</div>
 		<div class="content-wrap">
 			<div class="side-navigation primary-clr">
-				<h2 class="cursor-pointer">
+				<h2 class="cursor-pointer user">
 					<iconify-icon
 						icon="carbon:user-avatar-filled"
 						width="40"
 						height="40"
 						class="cursor-pointer"
 					></iconify-icon>
-					Username
+					&nbsp; Username
 				</h2>
 				<form class="boxed" action="">
-					<label for="label-title">Title</label>
-					<input type="text" name="title" id="title" />
-					<label for="label-author">Author</label>
-					<input type="text" name="author" id="author" />
+					<label for="label-title">Title</label> &nbsp;
+					<input type="text" name="title" id="title" maxlength="70" />
+					<label for="label-author">Author</label> &nbsp;
+					<input type="text" name="author" id="author" maxlength="70" />
 					<label for="label-pages">Book Length</label>
 					<!-- Different Lengths for books found here: -->
 					<!-- https://www.authorlearningcenter.com/writing/fiction/w/identifying-your-genre/7125/short-fiction-forms-novella-novelette-short-story-and-flash-fiction-defined -->
 					<!-- https://youtu.be/7LGpIQ6ceJs -->
-					<br />
-					<!-- Cannot style options themselves. If I want to style the hover effect on these elements I have to redo this in a different way. -->
-					<select name="book-length" id="bookLength">
-						<option value="">Short Story</option>
-						<option value="">Novella</option>
-						<option value="">Novellete</option>
-						<option value="">Novel</option>
-					</select>
-
-					<!-- <input
-						type="radio"
+					&nbsp;
+					<select
+						class="cursor-pointer dropdown"
 						name="book-length"
-						id="shortStory"
-						value="Short story"
-					/>
-					<label for="shortStory">Short Story</label>
-					<input type="radio" name="book-length" id="novella" />
-					<label for="novella">novella</label>
-
-					<input type="radio" name="book-length" id="novellete" />
-					<label for="novellete">Novellete</label>
-
-					<input type="radio" name="book-length" id="novel" />
-					<label for="novel">Novel</label> -->
+						id="bookLength"
+					>
+						<option title="1,000-7,4999 Words" value="">
+							&nbsp; Short Story
+						</option>
+						<option value="" title="7,5000-19,999 Words">
+							&nbsp; Novelette
+						</option>
+						<option value="" title="20,000-49,999 Words">&nbsp; Novella</option>
+						<option value="" title="50,000+ Words">&nbsp; Novel</option>
+					</select>
 
 					<label for="label-isread">Have you read this?</label>
 					<br />
-					<input type="radio" name="isRead" id="isRead" />
-					<label for="isRead">Yes</label>
-					<input type="radio" name="isRead" id="notRead" />
-					<label for="notRead">No</label>
+					<div class="yes-no">
+						<input type="radio" name="isRead" id="isRead" />
+						<label for="isRead" class="border"> &nbsp; &nbsp; Yes</label>
+						<input type="radio" name="isRead" id="notRead" />
+						<label for="notRead" class="border"> &nbsp; &nbsp; No</label>
+					</div>
+					<button
+						type="submit"
+						onclick="addElement()"
+						class="add-book-btn accent-clr"
+					>
+						Add Book &nbsp;
+						<iconify-icon
+							icon="carbon:add-filled"
+							width="32"
+							height="32"
+						></iconify-icon>
+					</button>
 				</form>
 
-				<button onclick="addElement()" class="accent-clr">
-					Add Book
-					<iconify-icon
-						icon="carbon:add-filled"
-						width="32"
-						height="32"
-					></iconify-icon>
-				</button>
 				<button onclick="changeTheme()" class="primary-clr">
 					Change Theme
 				</button>
 				<button onclick="" class="primary-clr">
-					Settings
+					Settings &nbsp;
 					<iconify-icon
 						icon="ci:settings-filled"
 						width="32"
@@ -87,7 +84,12 @@
 				<!-- library cards go here -->
 			</div>
 			<div class="results-panel primary-clr" id="resultsPanel">
-				<card class="">This is a card</card>
+				<card class="" id="card">
+					<p>Title:</p>
+					<p>Author:</p>
+					<p>Length:</p>
+					<button onclick="isRead(this)">Unread</button>
+				</card>
 			</div>
 		</div>
 

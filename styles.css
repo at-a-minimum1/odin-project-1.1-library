@@ -1,21 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
-/* @collappse */
+/* @collapse */
 :root {
 	--primary-clr: #ffffec;
 	--secondary-clr: #81b5a8;
 	--accent-clr: #40e0ff;
+	--shadow: #898989;
 }
 * {
-	/* font-family: "Courier New", Courier, monospace; */
-	/* all: revert; */
 	font-family: "Merriweather", serif;
-	/* --primary-clr: #fcfcd4;
-	--secondary-clr: #81b5a8;
-	--accent-clr: #40e0ff; */
 }
 /* Elements */
 card {
-	margin: 1rem;
+	margin: 10px;
+	/* margin-left: 8%; */
 	display: flex;
 	flex-direction: column;
 	cursor: pointer;
@@ -23,31 +20,48 @@ card {
 	height: 281px;
 	width: 300px;
 	border: 10px solid #bbbbbb;
-	position: relative;
-	box-shadow: 2px 3px #898989;
+	box-shadow: -2px 3px #898989;
+	padding-left: 1%;
+	padding-right: 1%;
 }
 card:hover {
-	background-color: #989898;
+	/* background-color: #989898; */
+}
+p {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
 button {
 	display: flex;
 	min-width: fit-content;
+	justify-content: center;
 	cursor: pointer;
 	border: none;
 	box-shadow: -2px 3px #898989;
 	border-radius: 10px;
-	margin: 10%;
+	/* margin-top: 10%; */
+	margin-bottom: 10%;
+	/* margin-left: 10%; */
+	/* margin-right: 10%; */
+	padding-top: 2%;
+	padding-bottom: 2%;
 	font-size: 32px;
-}
-label{
-	border: none;
 }
 button:hover {
 	/* box-shadow: inset 2px 3px; */
-	box-shadow: -3px 4px #898989;
+	box-shadow: -2.5px 3.5px #898989;
+	margin-bottom: 9.99%;
+	/* margin-left: 9.99%; */
+	/* margin-right: 9.99%; */
+	/* padding-top: 3%; */
+	/* padding-bottom: 3%; */
 }
 button:active {
-	box-shadow: inset 2px 2px 1px 1px #898989;
+	box-shadow: inset -2px 2px 1px 1px var(--shadow);
+}
+input {
+	width: 97%;
 }
 /* Utility Classes */
 .primary-clr {
@@ -60,26 +74,16 @@ button:active {
 	background-color: var(--accent-clr);
 }
 .border {
-	border: solid;
-	border-color: red;
+	border: dashed;
+	border-width: 1px;
+	border-color: grey;
 }
 .cursor-pointer {
 	cursor: pointer;
 }
-.boxed label {
-	display: inline-block;
-	width: 200px;
-	padding: 10px;
-	border: solid 2px #ccc;
-	transition: all 0.3s;
-}
-
-.boxed input[type="radio"] {
-	display: none;
-}
-
-.boxed input[type="radio"]:checked + label {
-	background-color: var(--secondary-clr);
+.greyed-out {
+	background-color: #989898;
+	box-shadow: inset -4px 5px #898989;
 }
 /* Top Navigation */
 .navigation-wrap {
@@ -92,51 +96,84 @@ button:active {
 	max-height: 82px;
 	/* position: fixed; */
 }
+/* Body of site  */
 .content-wrap {
 	display: grid;
 	grid-template-columns: 1fr 8fr;
 }
-/* Results Panel */
-.results-panel {
-	/* position: fixed; */
-	/* left: 15%; */
-	display: flex;
-	flex-flow: row wrap;
-	padding-left: 3%;
-	padding-right: 3%;
-	/* justify-content: center; */
-	/* width: 90%; */
-	/* display: flex;
-	flex-flow: column wrap; */
 
-	/* display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 1rem; */
-	/* height: 96vh; */
-	/* width: 90vw; */
-}
 /* Side Navigation */
 .side-navigation {
 	position: sticky;
 	top: 0%;
 	display: flex;
 	flex-direction: column;
+	padding-left: 10%;
+	padding-right: 10%;
 	/* background-color: #fcfcd4; */
 	/* max-width: 941px; */
 	width: 280px;
 	height: fit-content;
 	/* right: 0%; */
-	box-shadow: inset -0.2rem 0.2rem 8px #898989;
+	/* box-shadow: inset -0.2rem 0.2rem 8px #898989; */
 }
-
+.user {
+	display: flex;
+	align-content: center;
+	/* justify-content: center; */
+	border-bottom: solid 2px var(--secondary-clr);
+	padding-bottom: 10px;
+}
+#title {
+	padding-left: 15px;
+	width: 93%;
+}
+#author {
+	padding-left: 15px;
+	width: 93%;
+}
+.boxed {
+	/* margin-bottom: 10%; */
+	width: fit-content;
+}
+.boxed label {
+	display: inline-block;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	transition: all 0.3s;
+}
+.boxed input[type="radio"] {
+	display: none;
+}
+.boxed input[type="radio"]:checked + label {
+	background-color: var(--secondary-clr);
+}
+.dropdown {
+	width: 100%;
+	background-color: white;
+}
+.yes-no {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	background-color: white;
+	/* border: dashed 1px grey; */
+	/* margin-left: 4%; */
+	/* margin-right: 4%; */
+}
+.add-book-btn {
+	width: 100%;
+	margin-top: 10%;
+}
 select {
 	font-size: 20px;
 	background-color: var(--primary-clr);
 }
 
-.items :hover {
-	background-color: var(--secondary-clr);
+/* Results Panel */
+.results-panel {
+	/* position: fixed; */
+	/* left: 15%; */
+	display: flex;
+	flex-flow: row wrap;
+	margin-left: 3%;
 }
-/* .book-length {
-	background-color: var(--secondary-clr);
-} */

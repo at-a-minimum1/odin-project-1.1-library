@@ -1,12 +1,26 @@
 let myLibrary = [];
 const resultsPanel = document.getElementById("resultsPanel");
+const form = document.querySelector("form");
 class Card extends HTMLElement {
 	constructor() {
 		super();
+		const template = document.getElementById("card");
+		const node = document.importNode(template.content, true);
+		this.appendChild(node);
 	}
 }
+customElements.define("library-card", Card);
 
-customElements.define("card", Card);
+form.addEventListener("submit", (e) => {
+	e.preventDefault();
+	const fd = new FormData(form);
+	const obj = Object.fromEntries(fd);
+	const json = JSON.stringify(obj);
+	localStorage.setItem("form", json);
+	// for (item of fd) {
+	// 	console.log(item);
+	// }
+});
 
 function Book(bookTitle, bookAuthor, bookPages) {
 	// Constructor
@@ -21,9 +35,29 @@ function addBookToLibrary(book) {
 }
 
 function addElement() {
+	// The below variable is the form information entered in the page This video shows what I'm attempting https://youtu.be/7LGpIQ6ceJs
+	const title = document.createElement("p");
+	const titleContent = document.createTextNode("Title: ");
+	title.appendChild(titleContent);
+	const author = document.createElement("p");
+	const authorContent = document.createTextNode("Author: ");
+	author.appendChild(authorContent);
+	const length = document.createElement("p");
+	const lengthContent = document.createTextNode("Length: ");
+	length.appendChild(lengthContent);
+	const readBtn = document.createElement("button");
+	// readBtn.onclick = function isRead(readBtn);
+	readBtn.addEventListener("click", function callIsRead() {
+		isRead(readBtn);
+	});
+	readBtn.innerHTML = "Unread";
+
 	const newCard = document.createElement("card");
+	newCard.appendChild(title);
+	newCard.appendChild(author);
+	newCard.appendChild(length);
+	newCard.appendChild(readBtn);
 	resultsPanel.appendChild(newCard);
-	console.log("Button-works");
 }
 
 function changeTheme(primary, secondary, accent) {
@@ -42,6 +76,13 @@ function changeTheme(primary, secondary, accent) {
 		root.style.setProperty("--secondary-clr", secondary);
 		root.style.setProperty("--accent-clr", accent);
 	});
+}
+
+function isRead(toggleBtn) {
+	const list = toggleBtn.parentElement.classList;
+	if (toggleBtn.innerHTML == "Unread") toggleBtn.innerHTML = "Read";
+	else toggleBtn.innerHTML = "Unread";
+	list.toggle("greyed-out");
 }
 
 // Example code for how to update CSS variables. Use this for updating the themes
