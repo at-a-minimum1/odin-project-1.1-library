@@ -1,4 +1,5 @@
 let myLibrary = [];
+let bookObj;
 const resultsPanel = document.getElementById("resultsPanel");
 const form = document.querySelector("form");
 class Card extends HTMLElement {
@@ -14,45 +15,46 @@ customElements.define("library-card", Card);
 form.addEventListener("submit", (e) => {
 	e.preventDefault();
 	const fd = new FormData(form);
-	const obj = Object.fromEntries(fd);
-	const json = JSON.stringify(obj);
+	bookObj = Object.fromEntries(fd);
+	const json = JSON.stringify(bookObj);
 	localStorage.setItem("form", json);
-	// for (item of fd) {
-	// 	console.log(item);
-	// }
+
+	myLibrary.push(bookObj);
+	console.log(myLibrary);
+	addElement(bookObj);
 });
 
-function Book(bookTitle, bookAuthor, bookPages) {
-	// Constructor
-	const title = this.bookTitle;
-	const author = this.bookAuthor;
-	const pages = this.bookPages;
-	let isRead = true;
-}
+function addElement(bookObject) {
+	const newCard = document.createElement("card");
 
-function addBookToLibrary(book) {
-	myLibrary.push(book);
-}
-
-function addElement() {
 	// The below variable is the form information entered in the page This video shows what I'm attempting https://youtu.be/7LGpIQ6ceJs
+	// console.log(myLibrary[myLibrary.length - 1].title);
+
+	console.log(bookObject.title);
 	const title = document.createElement("p");
-	const titleContent = document.createTextNode("Title: ");
+	const titleContent = document.createTextNode(`Title: ${bookObj.title}`);
 	title.appendChild(titleContent);
 	const author = document.createElement("p");
-	const authorContent = document.createTextNode("Author: ");
+	const authorContent = document.createTextNode(`Author: ${bookObject.author}`);
 	author.appendChild(authorContent);
 	const length = document.createElement("p");
-	const lengthContent = document.createTextNode("Length: ");
+	const lengthContent = document.createTextNode(
+		`Length: ${bookObject.bookLength}`
+	);
 	length.appendChild(lengthContent);
 	const readBtn = document.createElement("button");
 	// readBtn.onclick = function isRead(readBtn);
+	if (bookObject.isRead != null && bookObject.isRead == "isRead") {
+		readBtn.innerHTML = "Read";
+		const bookClassList = newCard.classList;
+		bookClassList.add("greyed-out");
+	} else {
+		readBtn.innerHTML = "Unread";
+	}
 	readBtn.addEventListener("click", function callIsRead() {
 		isRead(readBtn);
 	});
-	readBtn.innerHTML = "Unread";
 
-	const newCard = document.createElement("card");
 	newCard.appendChild(title);
 	newCard.appendChild(author);
 	newCard.appendChild(length);
