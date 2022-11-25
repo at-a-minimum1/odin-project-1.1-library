@@ -1,5 +1,6 @@
 let myLibrary = [];
 let bookObj;
+let colorIncrement = 0;
 const resultsPanel = document.getElementById("resultsPanel");
 const form = document.querySelector("form");
 class Card extends HTMLElement {
@@ -26,10 +27,6 @@ form.addEventListener("submit", (e) => {
 
 function addElement(bookObject) {
 	const newCard = document.createElement("card");
-
-	// The below variable is the form information entered in the page This video shows what I'm attempting https://youtu.be/7LGpIQ6ceJs
-	// console.log(myLibrary[myLibrary.length - 1].title);
-
 	console.log(bookObject.title);
 	const title = document.createElement("p");
 	const titleContent = document.createTextNode(`Title: ${bookObj.title}`);
@@ -43,7 +40,6 @@ function addElement(bookObject) {
 	);
 	length.appendChild(lengthContent);
 	const readBtn = document.createElement("button");
-	// readBtn.onclick = function isRead(readBtn);
 	if (bookObject.isRead != null && bookObject.isRead == "isRead") {
 		readBtn.innerHTML = "Read";
 		const bookClassList = newCard.classList;
@@ -66,18 +62,32 @@ function changeTheme(primary, secondary, accent) {
 	primary = this.primary;
 	secondary = this.secondary;
 	accent = this.accent;
-	if (primary == null) {
+	if (colorIncrement > 2) {
+		colorIncrement = 0;
+	}
+	if (colorIncrement == 0) {
 		primary = "#D4F2FC";
 		secondary = "#B5A081";
 		accent = "#FF6240";
 	}
-
+	if (colorIncrement == 1) {
+		primary = "#AEB3D1";
+		secondary = "#8190B5";
+		accent = "#89FF40";
+	}
+	if (colorIncrement == 2) {
+		primary = "#ffffec";
+		secondary = "#81b5a8";
+		accent = "#40e0ff";
+	}
 	let root = document.documentElement;
 	root.addEventListener("click", (e) => {
 		root.style.setProperty("--primary-clr", primary);
 		root.style.setProperty("--secondary-clr", secondary);
 		root.style.setProperty("--accent-clr", accent);
 	});
+	console.log(colorIncrement);
+	colorIncrement++;
 }
 
 function isRead(toggleBtn) {

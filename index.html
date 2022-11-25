@@ -25,9 +25,21 @@
 				</h2>
 				<form class="boxed" action="">
 					<label for="label-title">Title</label> &nbsp;
-					<input type="text" name="title" id="title" maxlength="70" />
+					<input
+						type="text"
+						name="title"
+						id="title"
+						maxlength="70"
+						value="The Handmaid's Tale"
+					/>
 					<label for="label-author">Author</label> &nbsp;
-					<input type="text" name="author" id="author" maxlength="70" />
+					<input
+						type="text"
+						name="author"
+						id="author"
+						maxlength="70"
+						value="Margaret Atwood"
+					/>
 					<label for="label-pages">Book Length</label>
 					&nbsp;
 					<select
@@ -44,13 +56,21 @@
 						<option value="Novella" title="20,000-49,999 Words">
 							&nbsp; Novella
 						</option>
-						<option value="Novel" title="50,000+ Words">&nbsp; Novel</option>
+						<option value="Novel" title="50,000+ Words" selected>
+							&nbsp; Novel
+						</option>
 					</select>
 
 					<label for="label-isread">Have you read this?</label>
 					<br />
 					<div class="yes-no">
-						<input type="radio" name="isRead" id="isRead" value="isRead" />
+						<input
+							type="radio"
+							name="isRead"
+							id="isRead"
+							value="isRead"
+							checked
+						/>
 						<label for="isRead" class="border"> &nbsp; &nbsp; Yes</label>
 						<input type="radio" name="isRead" id="notRead" value="notRead" />
 						<label for="notRead" class="border"> &nbsp; &nbsp; No</label>
